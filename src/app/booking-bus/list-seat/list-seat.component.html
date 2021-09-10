@@ -1,0 +1,34 @@
+<div class="container"  >
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Tài Xế</h1>
+                <ng-container *ngFor="let seat of listSeat; let index=index">
+                    <app-seat [seat]="seat" (emitStatus)="datGheParent($event, seat)" class="each-seat">
+                    </app-seat>
+                    <br *ngIf="(index + 1) % 4 === 0" />
+                </ng-container>
+            </div>
+            <div class="col-md-6">
+                <h1>Danh sách ghế đã chọn</h1>
+                <div class="mt-5">
+                    <h3 class="mb-0 pr-1">Seats:</h3>
+                    <h4 class="text-right" *ngFor="let ghe of DanhSachGheDangDat">
+                        {{ghe.TenGhe}}
+                        <i class="fas fa-window-close text-danger" style="line-height: 1;"
+                            (click)="huyGhe(ghe)"></i>
+                    </h4>
+                </div>
+                <div  class="mt-3" >
+                    <h3 class="mb-0 pr-1 tag">Tickets:</h3>
+                    <h4 class="text-right tag text-success">{{soGheDaDat}}</h4>
+                </div>
+                <div class="mt-3 mb-3">
+                    <h3 class="mb-0 pr-1 tag">Amount Paid</h3>
+                    <h4 class="text-right tag text-success">${{tongTien}}</h4>
+                </div>
+                <h3 class="text-left l-hght-14 bg-dark text-white">
+                    TOTAL: <span class="text-success">${{tongTien}}</span><br>
+                    <h4 class="f-10 text-white-50">Seats Selected : <span class="text-success">{{soGheDaDat}}</span></h4>
+                </h3>
+            </div>
+        </div>

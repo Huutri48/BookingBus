@@ -1,0 +1,3 @@
+<button class="btn seat mr-5" [disabled]="seat.TrangThai"
+    [ngClass]="{'btn-danger sold-seat':seat.TrangThai, 'btn-success': status}"
+    (click)="datGhe()">{{seat.SoGhe}}</button>
